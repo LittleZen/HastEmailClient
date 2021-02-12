@@ -62,8 +62,7 @@ namespace HastEmail
             this.txtUser.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtUser.CustomButton.UseSelectable = true;
             this.txtUser.CustomButton.Visible = false;
-            this.txtUser.Lines = new string[] {
-        "oop"};
+            this.txtUser.Lines = new string[0];
             this.txtUser.Location = new System.Drawing.Point(48, 97);
             this.txtUser.MaxLength = 32767;
             this.txtUser.Name = "txtUser";
@@ -75,7 +74,7 @@ namespace HastEmail
             this.txtUser.ShortcutsEnabled = true;
             this.txtUser.Size = new System.Drawing.Size(189, 23);
             this.txtUser.TabIndex = 3;
-            this.txtUser.Text = "oop";
+            this.txtUser.Tag = "";
             this.txtUser.UseSelectable = true;
             this.txtUser.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtUser.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -94,8 +93,7 @@ namespace HastEmail
             this.txtPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtPassword.CustomButton.UseSelectable = true;
             this.txtPassword.CustomButton.Visible = false;
-            this.txtPassword.Lines = new string[] {
-        "oop"};
+            this.txtPassword.Lines = new string[0];
             this.txtPassword.Location = new System.Drawing.Point(48, 141);
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.Name = "txtPassword";
@@ -107,7 +105,6 @@ namespace HastEmail
             this.txtPassword.ShortcutsEnabled = true;
             this.txtPassword.Size = new System.Drawing.Size(189, 23);
             this.txtPassword.TabIndex = 4;
-            this.txtPassword.Text = "oop";
             this.txtPassword.UseSelectable = true;
             this.txtPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
