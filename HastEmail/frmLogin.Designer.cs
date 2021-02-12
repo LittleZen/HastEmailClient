@@ -29,6 +29,7 @@ namespace HastEmail
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.btnLogin = new MetroFramework.Controls.MetroButton();
             this.txtUser = new MetroFramework.Controls.MetroTextBox();
             this.txtPassword = new MetroFramework.Controls.MetroTextBox();
@@ -162,6 +163,7 @@ namespace HastEmail
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.btnLogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Log-in";
