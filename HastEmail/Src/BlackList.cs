@@ -1,40 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace HastEmail.Src
 {
     public class BlackList
     {
-        public BlackList()
-        {
-            blackEmails = new List<string>();
-        }
-
-        ~BlackList()
-        {
-            // None
-        }
-
-        private List<string> blackEmails;
-
-        public List<string> BlackEmails
-        {
-            get => blackEmails;
-            set
-            {
-                blackEmails = value;
-            }
-        }
-
         public bool AddEmail(User user, string sURL)
         {
             try
             {
-                var request = Server.MakeRequest(user, "PATCH", sURL);
+                string request = Server.MakeRequest(user, "PATCH", sURL);
                 //return JsonConvert.DeserializeObject<ServerResponse>(Server.MakeRequest(user, "PATCH", sURL)).Success;
                 return JsonConvert.DeserializeObject<ServerResponse>(request).Success;
             }
@@ -49,7 +26,7 @@ namespace HastEmail.Src
         {
             try
             {
-                var request = Server.MakeRequest(user, "DELETE", sURL);
+                string request = Server.MakeRequest(user, "DELETE", sURL);
                 return JsonConvert.DeserializeObject<ServerResponse>(request).Success;
             }
             catch (Exception ex)
@@ -63,7 +40,7 @@ namespace HastEmail.Src
         {
             try
             {
-                var request = Server.MakeRequest(sURL);
+                string request = Server.MakeRequest(sURL);
                 return JsonConvert.DeserializeObject<ServerResponse>(request).Success;
             }
             catch (Exception ex)
@@ -71,20 +48,6 @@ namespace HastEmail.Src
                 Debug.WriteLine($"Eccezione generica: {ex}");
             }
             return false;
-        }
-
-        public BlackList GetList(User user, string sURL)
-        {
-            try
-            {
-                var request = Server.MakeRequest(sURL);
-                return JsonConvert.DeserializeObject<BlackList>(request);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Eccezione generica: {ex}");
-            }
-            return null;
         }
 
         public ListResult GetList()
@@ -110,7 +73,10 @@ namespace HastEmail.Src
         public class ListResult
         {
             public ListEntry[] blacklist { get; set; }
-            public static string JsonSerialaized(object lista) => JsonConvert.SerializeObject(lista);
+            public static string JsonSerialaized(object lista)
+            {
+                return JsonConvert.SerializeObject(lista);
+            }
 
             //Esegue la scrittura su disco di una stringa
             public static bool WriteJson(string JsonPath, string JsonBuffer)

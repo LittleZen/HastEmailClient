@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace HastEmail.Src
 {
@@ -13,12 +11,12 @@ namespace HastEmail.Src
         {
             user = new User(_User, _Passwd);
         }
-        
+
         public static bool IsEmailValid(string email)
         {
             try
             {
-                var eMailValidator = new System.Net.Mail.MailAddress(email);
+                System.Net.Mail.MailAddress eMailValidator = new System.Net.Mail.MailAddress(email);
                 return true;
             }
             catch (Exception ex)

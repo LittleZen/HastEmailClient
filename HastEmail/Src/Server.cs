@@ -14,7 +14,7 @@ namespace HastEmail.Src
 
         }
 
-        public bool Success;  
+        public bool Success;
     }
 
     public class Server
@@ -29,17 +29,17 @@ namespace HastEmail.Src
             // None
         }
 
-        public readonly static string MainUrl = "https://hastemailapi.herokuapp.com";
+        public static readonly string MainUrl = "https://hastemailapi.herokuapp.com";
 
-        public readonly static string LoginURL = MainUrl + "/login";
+        public static readonly string LoginURL = MainUrl + "/login";
 
-        public readonly static string CheckURL = MainUrl + "/check/";
+        public static readonly string CheckURL = MainUrl + "/check/";
 
-        public readonly static string RemoveURL = MainUrl + "/delete/";
+        public static readonly string RemoveURL = MainUrl + "/delete/";
 
-        public readonly static string AddURL = MainUrl + "/add/";
+        public static readonly string AddURL = MainUrl + "/add/";
 
-        public readonly static string ListURL = MainUrl + "/list/";
+        public static readonly string ListURL = MainUrl + "/list/";
 
         public static string MakeRequest(User user, string HttpVerb, string EndPoint)
         {
@@ -64,8 +64,10 @@ namespace HastEmail.Src
         {
             HttpWebRequest request = WebRequest.CreateHttp(EndPoint);
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (StreamReader reader = new StreamReader(response.GetResponseStream())) 
-                    return reader.ReadToEnd();  
+            using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+            {
+                return reader.ReadToEnd();
+            }
         }
     }
 }
