@@ -1,174 +1,80 @@
-# Cyberpunk 2077 | Easy Patcher
+# HastEmail-Client
+Simple client in C# for HastEmail API
 
-This software allows you to easily install all the patches from [CyberEngineTweaks](https://bit.ly/384rMEx), created by yamashi.
-For any problems, or for more information, check the main repository (by yamashi). 😊
-
------------
-![Demo](https://i.imgur.com/W7UpaxI.png)
+![Demo](https://i.imgur.com/eYv6KLG.png)
 
 
-[DOWNLOAD](https://bit.ly/384rLQZ) | [MAIN REPOSITORY](https://bit.ly/384rMEx) | [ISSUES](https://bit.ly/34cbtUX)
-
------------
+[API](https://bit.ly/2yv3qGb) | [ISSUE](https://bit.ly/2zdu06I) | [HEROKU](https://bit.ly/2SBDI9V)
 
 ## Index
-- [Guide](#guide)
-- [About](#about)
-- [Contributors](#contributors)
-- [Previous Versions](#previous-versions)
-- [Changelog](#changelog)
-
-
------------
-## Guide
-
-1) Download the .exe file
-2) Open it and extract the files where you want.
-3) Open `CP2077 - EasyPatcher.exe` from the folder extracted
-4) If you use Steam or GOG, just click "Find Steam Path" or "Find GOG Path" (patch will be automatically installed)
-5) If you want manually select it (or if you use EpicGames), just click on "Select Path to Cyberpunk 2077 Main Directory"  and select the main folder of "Cyberpunk 2077" (not the x64 folder! The main directory!)
-6) Enjoy, and check yamashi's main page, he's the true hero!
+- [Specifica del Progetto](#specifica-del-progetto)
+- [Architettura e Sviluppatore](#architettura-e-informazioni-sullo-sviluppatore)
+- [Servizi esterni utlizzati](#servizi-esterni-utlizzati)
+- [About HastEmail Client](#about-hastemail-client)
+- [Licenza](#licenza)
 
 -----------
-
-## About
-Type | Description
---- | ---
-`Language` | *C# (patch in c++)*
-`Installer Developer` | *LittleZen*
-`Patch Developer` | *[yamashi + others](https://github.com/yamashi/CyberEngineTweaks)*
-`Patcher Base Version` | *1.0*
-
------------
-
-# Contributors
-
-- [x] [JayVee732](https://github.com/JayVee732)
-- [x] [Saibamen](https://github.com/Saibamen)
-- [x] [kevinf100](https://github.com/kevinf100)
-- [x] [Yamashi](https://github.com/yamashi)
+### Specifica del Progetto
+Il progetto consiste nella realizzazione di un client per la gestione di filtro mail, sviluppato secondo l’architettura RESTful. L’API (server-side) gestisce un database locale, catalogando tutte le e-mail considerate “spam” o malicious in un file JSON.
+<br>
+<br>
+L’API accetta richieste HTTP di tipo GET e POST, rispettivamente utilizzate per controllare se una mail (o più mail) è presente nella blacklist e per la fase di autenticazione, senza richiedere particolari requisiti.
+I metodi PATCH e DELETE, utilizzati rispettivamente per aggiungere o rimuovere una mail, vengono, invece, protetti con la basic-authentication (over-https), in quanto unicamente l’amministratore dell’API ha diritto all’utilizzo. 
+<br>
+<br>
+Per una comoda gestione dell’API, si è quindi scelto di creare un client C#, che aiuti nell’ordinaria amministrazione, e che consenta di gestire i vari metodi anche da remoto, così da aggiungere e rimuovere le diverse e-mail all’interno della blacklist.
 
 -----------
+### Architettura e informazioni sullo sviluppatore
+L'architettura è stata scelta basandosi sul modello API-RESTful implementato nella parte server-side. Per migliorare la grafica dei windows form, si è scelto di implementare il framework *MetroFramework*, il quale consente di gestire i form in maniera più semplice, e offre degli *oggetti natii*. 
 
-## Changelog
+About | Description
+--- | --- 
+`Developer` | *Jacopo M. Mengarelli (LitteZen)*
+`Matricola` | *292728*
+`Language` | *C#*
+`Framework` | *MetroFramework*
+`Release Version` | *1.0*
+`Last Version` | *1.4*
 
-### Version 1.0 [15/12/2020]
 
-- [x] Released Easy Patcher v1.0
-- [x] Released yamashi patch v0.7.0
+###### * = La repository `API` è disponibile [QUI](https://github.com/Zenek-Hastro/Hastemail)  
+-----------
+### Servizi esterni utlizzati
+L'app è stata configurata per funzionare su Heroku (vedi documentazione API). Heroku è un servizio web, che oltre a consentire l'hosting gratuito dell'api, fornisce certificati HTTPS essenziali nelle fasi di autenticazione. Il client ha fatto uso di un Framework esterno ( già ampiamente presentato), e di una libreria esterna per la gestione dei file JSON.
+
+About | Description
+--- | --- 
+`MetroFramework` | *Windows form framework by Jens Thiel*
+`Newtonsoft Json` | *Json Lib used for correctly parse Json files*
 
 -----------
+### About HastEmail Client
+Il programma si compone di due form principali. Il primo richiede l'autenticazione (utilizzata successivamente per validare alcuni metodi API), il secondo è il "main form" utilizzato per gestire e visualizzare le richieste/risposte al/del server.
 
-### Version 2.0 [16/12/2020]
+#### LoginForm Access
+![Screenshot Login](https://i.imgur.com/gZ1u0cs.png)
+![Screenshot Login Fail](https://i.imgur.com/JeKViFR.png)
 
-- [x] Released Easy Patcher v2.0
-- [x] Released yamashi patch v0.7.2
-- [x] New HUD (Now you can directly manage the settings through the tool)
-- [x] Tool will now automatically detect (after the first time) the path of CP2077, and won't ask to re-insert the path
-- [x] You can now directly open the json file (for manually manage the settings or for check it)
-- [x] "About" now correctly redirect all to this thread
-- [x] Some minor visual effects added
-- [x] Now requires Administrator Privilege
-- [x] Icons updated
-- [x] Code Cleared
+
+Il login form, è utilizzato per autenticare l'utente. Invia una richiesta all'api, la quale mediante la basic authentication consente di validare o meno l'utente. La textbox "password" nasconde i caratteri per proteggere la password. In caso di inserimento di credenziali errate, il form diventa rosso e prenseta una *label di errore* (come presentato nel secondo screenshot)
+
+
+#### MainForm
+![Main Form Check One Email](https://i.imgur.com/5MMWUaD.png)
+![Main Form Check Blacklist](https://i.imgur.com/VgG8JTH.png)
+![Main Form Add email](https://i.imgur.com/cqGw2D0.png)
+![Main Form Remove email](https://i.imgur.com/WN3NmhD.png)
+![Main Form Settings](https://i.imgur.com/OOQZPtB.png)
+
+
+- `Check One Email`: Tab che consente di inviare una mail al server e verifica che non sia presente il blacklist
+- `Check BlackList`: Tab che consente di visualizzare tutta la blacklist mediante la stampa nella textbox
+- `Add Email`: Tab che consente di aggiungere una mail alla blacklist
+- `Remove Email`: Tab che consente di rimuovere una mail dalla blacklist
+- `Settings`: Tab che consente di visualizzare impostazioni e informazioni
+-----------
+### Licenza
+Per la scelta della licensa si è scelto di utilizzare il servizio "https://choosealicense.com/", che sulla base delle informazioni fornite, e cioè sulla necessità di mentenere il codice più aperto e utilizzabile possibile, ha suggerito l'implementazione della licenza GNU V3
 
 -----------
-
-### Version 2.2 [17/12/2020]
-
-- [x] Resolved a bug where the game didn't start properly after the installation of the patch
-- [x] `Uninstall` System Added (now you can easy install/unistall the patches)
-- [x] `Check Update` System added (will automatically install the lastest patch available)
-- [x] ToolTips added. Just move the cursor over the settings, for check what they do
-- [x] Update system now correctly remove the zip files downloaded, after the update
-- [x] Released the option `Remove Pedestrians` (yamashi)
-- [x] Released the option `Disable Antialiasing` (yamashi)
-- [x] Added the `Memory Pool` section for correctly manage the memory pool (CPU/GPU) (yamashi)
-- [x] Released the `Async Compute` features (yamashi)
-- [x] Released the `Skip Start menù` features (yamashi)
-- [x] Installation method will now install the latest patch available
-- [x] Changed Memory Pool Input (NumbericUpDown added)
-- [x] Huge code CleanUp + Error Handling
-- [x] .gitignore updated
-- [x] Autofind Steam path added
-- [x] Autofind GOG path added
-- [x] Minor changes and bug fix
-
------------
-
-### Version 2.5 [18/12/2020]
-
-- [x] Added support for the console command (yamashi)
-- [x] Changed button text, now they are more clear
-- [x] Changed Messagebox, now they are more clear
-- [x] MaximizeBox option disabled
-- [x] Code clean up + minor improvements
-- [x] "Dump Game Option" features by yamashi added
-- [x] New ToolTips
-
------------
-
-### Version 2.7 [19/12/2020]
-
-- [x] Now the tool will automatically check for EasyPatcher update, and notify it!
-
------------
-
-### Version 2.8 [20/12/2020]
-
-- [x] Fixed an issue that doesn't allow mod installation
-- [x] Resolved a bug where save the settings before install the patch may start unexpected crash
-- [x] Resolved a bug where the Console Key was not being set on the initial installation of the mods
-- [x] New ToolTips added
-- [x] HUD changed due to new options available
-- [x] Released the `Dump Game Option` option (yamashi)
-- [x] Released the `Debugger` option (yamashi)
-- [x] Released the `Console` option (yamashi)
-- [x] Released the `Disable Vignette` option (yamashi)
-- [x] Released the `Disable Boundary Teleport` option (yamashi)
-- [x] Released the `Disable Intro Movies` option (yamashi)
-- [x] Update system-logic changed
-- [x] Console key checkbox, now correctly disable the console input forms (if disabled)
-- [x] Console key now correctly work (@JayVee732)
-- [x] Error messagebox improved for correctly find future bugs
-- [x] Code cleaned + minor bug fixes
-
------------
-
-### Version 3.1 [21/12/2020]
-
-- [x] Messagebox error improved (now correctly show the exception. This may be useful for detect future bugs)
-- [x] Uninstall system now correctly delete all files (uninstall system now correctly show the tracedebug output)
-- [x] Json indentation fixed
-- [x] Uninstall and reinstall will now correctly load the default settings 
-- [x] Settings options are now available only after the installation of the patch
-- [x] Use Tilde Key: updated the initial value to use the Keys enum
-- [x] Refactored Return Functions: Shorted functions for returning registry values.
-- [x] Yamashi's repository updated (all links are now correctly redirected)
-- [x] Prevent "empty" Yes/No MsgBox and Exception after clicking Yes in autodetect GOG mode
-- [x] Code cleaned up
-
------------
-
-### Version 3.2 [06/01/2021]
-
-- [x] Correctly redirect the download of latest yamashi's patch, now EasyPatcher correctly work!
-- [x] Download/Install patch will now correctly delete the zip archive after installation
-- [x] Uninstall/Download System now correctly work (and delete the correct files)
-- [x] Code Cleaned-up + new comments
-
------------
-
-### Version 3.5 [10/02/2021]
-
-- [x] Fixed a bug which cause the installation fail
-- [x] Improved and fixed the uninstall method
-- [x] Clean downloadPath folder to prevent Exception while trying to extract already exists files
-- [x] Code optimization, and minors bug fixies
-
------------
-
-## LICENSE AND USE
-
-- [x] Install the patch, download the source or the installer will result as "license and use" accepted
-- [x] I do not take any responsibility for any problems resulting from this software.
