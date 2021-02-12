@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HastEmail.Src.User">
+    <Position X="4.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAEAAAAAAAACAAAQAgAAAAA=</HashCode>
+      <FileName>Src\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HastEmail.Src.ServerResponse">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Src\Server.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HastEmail.Src.Server">
+    <Position X="7" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Src\Server.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HastEmail.Src.Client">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Src\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HastEmail.Src.BlackList">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAACAAAAAAAAAAAAAAAAACAAAAAAAAAAM=</HashCode>
+      <FileName>Src\BlackList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
