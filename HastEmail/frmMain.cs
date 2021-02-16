@@ -16,6 +16,8 @@ namespace HastEmail
         {
             InitializeComponent();
             client = _Client;
+            lblusername.Text = client.user.username;
+            lblVersion_value.Text = "v2.0";
         }
 
         private void btnCheck_Click(object sender, EventArgs e)

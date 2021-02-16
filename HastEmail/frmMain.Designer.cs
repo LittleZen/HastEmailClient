@@ -89,7 +89,7 @@ namespace HastEmail
             this.metroTabControl1.Controls.Add(this.metroTabPage5);
             this.metroTabControl1.Location = new System.Drawing.Point(0, 28);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(516, 417);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroTabControl1.TabIndex = 5;
@@ -151,6 +151,7 @@ namespace HastEmail
             this.txtcheck.SelectionStart = 0;
             this.txtcheck.ShortcutsEnabled = true;
             this.txtcheck.Size = new System.Drawing.Size(240, 23);
+            this.txtcheck.Style = MetroFramework.MetroColorStyle.Silver;
             this.txtcheck.TabIndex = 1;
             this.txtcheck.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcheck.UseSelectable = true;
@@ -297,6 +298,7 @@ namespace HastEmail
             this.txtadd.SelectionStart = 0;
             this.txtadd.ShortcutsEnabled = true;
             this.txtadd.Size = new System.Drawing.Size(217, 23);
+            this.txtadd.Style = MetroFramework.MetroColorStyle.Silver;
             this.txtadd.TabIndex = 3;
             this.txtadd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtadd.UseSelectable = true;
@@ -385,6 +387,7 @@ namespace HastEmail
             this.txtRemove.SelectionStart = 0;
             this.txtRemove.ShortcutsEnabled = true;
             this.txtRemove.Size = new System.Drawing.Size(196, 23);
+            this.txtRemove.Style = MetroFramework.MetroColorStyle.Silver;
             this.txtRemove.TabIndex = 2;
             this.txtRemove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRemove.UseSelectable = true;
