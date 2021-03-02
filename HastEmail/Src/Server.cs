@@ -19,16 +19,6 @@ namespace HastEmail.Src
 
     public class Server
     {
-        public Server()
-        {
-
-        }
-
-        ~Server()
-        {
-            // None
-        }
-
         public static readonly string MainUrl = "https://hastemailapi.herokuapp.com";
 
         public static readonly string LoginURL = MainUrl + "/login";

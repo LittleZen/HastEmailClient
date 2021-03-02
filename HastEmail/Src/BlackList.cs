@@ -69,7 +69,6 @@ namespace HastEmail.Src
             }
         }
 
-
         public class ListResult
         {
             public ListEntry[] blacklist { get; set; }
