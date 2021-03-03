@@ -38,8 +38,8 @@ namespace HastEmail
                 return;
 
             string sURL = Server.AddURL + txtadd.Text;
-            lblAdd.Text = client.user.AddEmail(client.user, sURL) ? "Ho aggiunto la mail" :
-                                                                    "Questa mail è già esistente";
+            lblAdd.Text = client.user.AddEmail(client.user, sURL) ? "Email correctly added" :
+                                                                    "This email is already into the db";
             lblAdd.Visible = true;
         }
 
